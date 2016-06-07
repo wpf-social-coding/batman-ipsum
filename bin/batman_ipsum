@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+require "gli"
+require "batman_ipsum"
+
+module BatmanIpsum
+  class App
+    extend GLI::App
+
+    program_desc "Simple command line client for http://batman-ipsum.com/"
+
+    version BatmanIpsum::VERSION
+
+    subcommand_option_handling :normal
+    arguments :strict
+
+    desc "Get list of Batman quotes"
+    command :quotes do |c|
+      c.desc "Specify which characters should be quoted"
+      c.default_value "all"
+      c.flag :characters
+
+      c.action do |_global_options, options, _args|
+      end
+    end
+
+    desc "Describe characters here"
+    arg_name "Describe arguments to characters here"
+    command :characters do |c|
+      c.action do |global_options,options,args|
+        puts "characters command ran"
+      end
+    end
+
+    desc "Describe movies here"
+    arg_name "Describe arguments to movies here"
+    command :movies do |c|
+      c.action do |global_options,options,args|
+        puts "movies command ran"
+      end
+    end
+
+    pre do |global,command,options,args|
+      true
+    end
+
+    post do |global,command,options,args|
+      # Post logic here
+      # Use skips_post before a command to skip this
+      # block on that command only
+    end
+
+    on_error do |exception|
+      # Error logic here
+      # return false to skip default error handling
+      true
+    end
+  end
+end
+
+exit BatmanIpsum::App.run(ARGV)
