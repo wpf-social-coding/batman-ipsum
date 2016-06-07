@@ -24,7 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Obviously the main feature is to display Batman quotes:
+
+    $ batman_ipsum quotes
+    
+To see all available options run
+
+    $ batman_ipsum help quotes
 
 ## Development
 
