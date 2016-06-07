@@ -13,7 +13,7 @@ module BatmanIpsum
     subcommand_option_handling :normal
     arguments :strict
 
-    desc "Get list of Batman quotes"
+    desc "Print some Batman quotes to STDOUT"
     command :quotes do |c|
       c.desc "Specify which characters should be quoted"
       c.default_value "all"
@@ -23,27 +23,25 @@ module BatmanIpsum
       end
     end
 
-    desc "Describe characters here"
-    arg_name "Describe arguments to characters here"
+    desc "List all available characters to choose from"
     command :characters do |c|
-      c.action do |global_options,options,args|
-        puts "characters command ran"
+      c.action do |_global_options, options, _args|
+        puts "Listing characters..."
       end
     end
 
-    desc "Describe movies here"
-    arg_name "Describe arguments to movies here"
+    desc "List all available movies to choose from"
     command :movies do |c|
-      c.action do |global_options,options,args|
-        puts "movies command ran"
+      c.action do |_global_options, options, _args|
+        puts "Listing movies..."
       end
     end
 
-    pre do |global,command,options,args|
+    pre do |global, command, options, args|
       true
     end
 
-    post do |global,command,options,args|
+    post do |global, command, options, args|
       # Post logic here
       # Use skips_post before a command to skip this
       # block on that command only
