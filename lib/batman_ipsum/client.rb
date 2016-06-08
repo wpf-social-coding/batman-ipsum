@@ -9,7 +9,7 @@ module BatmanIpsum
 
     attr_reader :cache_path
 
-    def initialize(cache_path = "/tmp/batman_ipsum.json")
+    def initialize(cache_path = "/tmp/batman_ipsumx.json")
       @cache_path = cache_path
     end
 
