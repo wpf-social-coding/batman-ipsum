@@ -19,8 +19,10 @@ module BatmanIpsum
         character = data["characters"].find { |char| char["id"] == quote["id_character"] }["name"]
         return [Quote.new(text: quote["text"], character: character)]
       else
-        quote = data["texts"].find { |q| q["id_character"] == characters } || {}
-        return [Quote.new(text: quote["text"], character: characters)]
+        character = data["characters"].find { |char| char["name"] == characters }
+        raise "No quote found for #{characters}" unless character
+        quote = data["texts"].find { |q| q["id_character"] == character["id"] }
+        return [Quote.new(text: quote["text"], character: character["name"])]
       end
     end
 
