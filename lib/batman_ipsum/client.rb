@@ -14,10 +14,14 @@ module BatmanIpsum
     end
 
     def fetch_quotes(characters:)
-      quote = data["texts"].sample
-      character = data["characters"].find { |char| char["id"] == quote["id_character"] }["name"]
-
-      [Quote.new(text: quote["text"], character: character)]
+      if characters == "all"
+        quote = data["texts"].sample
+        character = data["characters"].find { |char| char["id"] == quote["id_character"] }["name"]
+        return [Quote.new(text: quote["text"], character: character)]
+      else
+        quote = data["texts"].find { |q| q["id_character"] == characters } || {}
+        return [Quote.new(text: quote["text"], character: characters)]
+      end
     end
 
 
