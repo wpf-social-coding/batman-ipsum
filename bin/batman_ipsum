@@ -13,6 +13,9 @@ module BatmanIpsum
     subcommand_option_handling :normal
     arguments :strict
 
+    desc "Be more verbose on errors"
+    switch :verbose, default_value: false
+
     desc "Print some Batman quotes to STDOUT"
     command :quotes do |c|
       c.desc "Specify which characters should be quoted"
@@ -41,6 +44,8 @@ module BatmanIpsum
     end
 
     pre do |global, command, options, args|
+      ENV["GLI_DEBUG"] = global[:verbose].to_s
+
       @client = BatmanIpsum::Client.new
 
       true
