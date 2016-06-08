@@ -1,6 +1,6 @@
 # Batman Ipsum CLI
 
-![](http://i.imgur.com/d2LlrsG.gif)
+![](https://i.imgur.com/AttXCRL.gif)
 
 Maybe you know [Batman Ipsum](http://batman-ipsum.com/) by [Bruno Simon](http://bruno-simon.com/). If don't know it you should check it out. It is Batman themed [filler text](https://en.wikipedia.org/wiki/Filler_text) provider which uses quotes from [The Dark Knight Trilogy](https://en.wikipedia.org/wiki/The_Dark_Knight_Trilogy).
 
