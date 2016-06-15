@@ -20,7 +20,7 @@ module BatmanIpsum
       c.flag :characters
 
       c.action do |_global_options, options, _args|
-        @client.fetch_quotes(characters: options[:characters]).each do |quote|
+        @client.fetch_quotes.each do |quote|
           puts "#{quote.text} - #{quote.character}"
         end
       end
