@@ -1,8 +1,6 @@
 require "open-uri"
 require "json"
 
-require "pry"
-
 module BatmanIpsum
   class Client
     BATMAN_IPSUM_DATA_URI = "http://batman-ipsum.com/data/punch_lines.json".freeze
