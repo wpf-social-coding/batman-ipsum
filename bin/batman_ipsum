@@ -24,7 +24,11 @@ module BatmanIpsum
 
       c.action do |_global_options, options, _args|
         @client.fetch_quotes(characters: options[:characters]).each do |quote|
-          puts "#{quote.text} - #{quote.character}"
+          if quote.character
+            puts "#{quote.text} - #{quote.character}"
+          else
+            puts "#{quote.text}"
+          end
         end
       end
     end

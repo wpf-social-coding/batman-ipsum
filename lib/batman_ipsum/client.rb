@@ -16,7 +16,7 @@ module BatmanIpsum
     def fetch_quotes(characters:)
       if characters == "all"
         quote = data["texts"].sample
-        character = data["characters"].find { |char| char["id"] == quote["id_character"] }["name"]
+        character = data["characters"].find { |char| char["id"] == quote["id_character"] }&.fetch("name", nil)
         return [Quote.new(text: quote["text"], character: character)]
       else
         character = data["characters"].find { |char| char["name"] == characters }
