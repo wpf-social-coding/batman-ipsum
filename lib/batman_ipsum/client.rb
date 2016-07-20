@@ -8,13 +8,12 @@ module BatmanIpsum
     attr_reader :cache_path
 
     def initialize(cache_path = "/tmp/batman_ipsum.json")
-      raise "Invalid cache_path. #{cache_path.inspect} should be a JSON file." unless cache_path =~ /\.json$/
       @cache_path = cache_path
     end
 
     def fetch_quotes
       quote = data["texts"].sample
-      character = data["characters"].find { |char| char["id"] == quote["id_character"] }["name"]
+      character = data["characters"].find { |char| char["id"] == quote["id_character"]}["name"]
 
       [Quote.new(text: quote["text"], character: character)]
     end
@@ -27,11 +26,15 @@ module BatmanIpsum
         JSON.parse(File.read(cache_path))
       else
         File.open(cache_path, "w+") do |f|
-          f.puts open(BATMAN_IPSUM_DATA_URI).read
+          f.puts download_data
         end
 
         data
       end
+    end
+
+    def download_data
+      open(BatmanIpsum::Client::BATMAN_IPSUM_DATA_URI).read
     end
   end
 end
