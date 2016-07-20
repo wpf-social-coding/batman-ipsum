@@ -12,10 +12,11 @@ module BatmanIpsum
     end
 
     def fetch_quotes
-      quote = data["texts"].sample
-      character = data["characters"].find { |char| char["id"] == quote["id_character"]}["name"]
+      data["texts"].take(2).each_with_object([]) do |quote, quotes|
+        character = data["characters"].find { |char| char["id"] == quote["id_character"]}["name"]
 
-      [Quote.new(text: quote["text"], character: character)]
+        quotes << Quote.new(text: quote["text"], character: character)
+      end
     end
 
 
