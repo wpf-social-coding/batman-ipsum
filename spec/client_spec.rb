@@ -31,7 +31,7 @@ describe BatmanIpsum::Client do
     let(:data) do
       {
         "texts" => [
-          { "id_character" => 1, "text" => "Fubar" }
+          { "id_character" => 1, "text" => "Lorem" }
         ],
         "characters" => [
           { "id" => 1, "name" => "Bruce Wayne" }
@@ -52,7 +52,7 @@ describe BatmanIpsum::Client do
       it "return random quote" do
         quotes = subject.fetch_quotes
 
-        expect(quotes.first.text).to eq "Fubar"
+        expect(quotes.first.text).to eq "Lorem"
         expect(quotes.first.character).to eq "Bruce Wayne"
       end
     end
