@@ -12,7 +12,7 @@ describe BatmanIpsum::Client do
 
     expect(quotes).not_to be_nil
     expect(quotes).not_to be_empty
-    expect(quotes.size).to eq 1
+    expect(quotes.size).to eq 2
 
     quote = quotes.first
 
